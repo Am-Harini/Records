@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <style>
+        table button{
+            width: 100%;
+            background-color: aqua;
+            color: black;
+        }
+        #two button{
+            background-color: red;
+        }
+        #two{
+            margin:3%;
+        }
+</style>
+</head>
+<body>
+<center>
+    <h1>STUDENT FORM</h1>
+    <table  cellspacing="10" border="2" cellpadding="5" id="one">
+        <tr>
+            <th>Name</th>
+            <td><input type="text" class="input" id="name"></td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td><input type="number" class="input" id="age"></td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td><input type="radio" class="input" name="Gender" value="Male" id="male">Male
+                <input type="radio" class="input" name="Gender" value="Female" id="female">Female
+            </td>
+        </tr>
+        <th>Course</th>
+        <td>
+            <select name="Course" id="course" class="input">
+                <option value="HTML5">HTML5</option>
+                <option value="CSS3">CSS3</option>
+                <option value="Bootstrap">Bootstrap</option>
+                <option value="Javascript">Javascript</option>
+                <option value="PHP">PHP</option>
+            </select>
+        </td>
+        
+        <tr>
+           <th>E-mail</th>
+           <td><input type="email" class="input" id="email"></td>
+        </tr>
+        <tr>
+           <td colspan="2">
+           <button type="button" onclick="savebtn()">Save</button>
+           </td>
+        </tr>
+    </table>
+    <table id="two" border="2" cellspacing="4" cellpadding="3">
+        <tr>
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>COURSE</th>
+        <th>GENDER</th>
+        <th>EMAIL</th>
+        <th>ACTION</th>
+        </tr>
+        <tr>
+        <td>Amal</td>
+        <td>22</td>
+        <td>HTML5</td>
+        <td>Male</td>
+        <td>Amal@gmail.com</td>
+        <td><button onclick='dlt(event)' >Delete</button></td>
+        </tr>
+    </table>
+</center>
+   <script> 
+   function savebtn() {
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const gender = document.querySelector('input[name="Gender"]:checked').value.trim();
+            const course = document.getElementById('course').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            const table = document.getElementById('two');
+            const newRow = table.insertRow();
+
+        newRow.insertCell(0).innerText = name;
+        newRow.insertCell(1).innerText = age;
+        newRow.insertCell(2).innerText = course;
+        newRow.insertCell(3).innerText = gender;
+        newRow.insertCell(4).innerText = email;
+        newRow.insertCell(5).innerHTML = "<button onclick='dlt(event)'>Delete</button>";
+        }
+      //delete function
+      function dlt(event)
+      {
+        event.target.parentElement.parentElement.remove()
+      }
+   </script>
+</body>
+</html>
